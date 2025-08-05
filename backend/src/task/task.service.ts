@@ -39,7 +39,7 @@ export class TaskService {
         return task;
     }
 
-    remove(id: number): boolean {
+    delete(id: number): boolean {
         const index = this.tasks.findIndex(t => t.id === id);
         if (index === -1) {
             return false;

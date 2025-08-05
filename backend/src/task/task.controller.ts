@@ -39,8 +39,11 @@ export class TaskController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    const thisId = parseInt(id, 10);
-    return this.taskService.remove(thisId);
+  delete(@Param('id', ParseIntPipe) id: number): void {
+    const deleted = this.taskService.delete(id);
+    if (!deleted) {
+      throw new NotFoundException('Tarefa não encontrada');
+    }
   }
+  
 }
